@@ -4,7 +4,9 @@ Type annoted function floor which taks a as argurment
 """
 
 
+import math
+
 def floor(n: float) -> float:
     """Function floo which takes a float as an arguement.
     """
-    return (n)
+    return math.floor(n)
