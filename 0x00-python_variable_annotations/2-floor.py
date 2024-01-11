@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""
-Type annoted function floor which taks a as argurment
-"""
+'''Basic Annotations floor
+'''
 
 
-import math
-
-def floor(n: float) -> float:
-    """Function floo which takes a float as an arguement.
-    """
-    return math.floor(n)
+def floor(a: float) -> int:
+    '''Computes the floor of a floating-point number.
+    '''
+    return int(a)
