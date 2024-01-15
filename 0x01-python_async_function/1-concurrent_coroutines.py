@@ -3,19 +3,28 @@
 importing wait_random, an asyn croutine called wait_n
 """
 
-import asyncio
-import random
-
 
 import asyncio
-import random
+from typing import List
+import importlib
 
-async def wait_random(max_delay: int = 10) -> float:
-    delay = random.uniform(0, max_delay)
-    await asyncio.sleep(delay)
-    return delay
 
-async def wait_n(n: int, max_delay: int) -> list[float]:
+wait_random_module = importlib.import_module('0-basic_async_syntax')
+wait_random = wait_random_module.wait_random
+
+
+async def wait_n(n: int, max_delay: int = 10) -> List[float]:
+    """
+    Asynchronous coroutine that spawns wait_random n times with the
+    specified max_delay.
+
+    Args:
+        n (int): The number of times to spawn wait_random.
+        max_delay (int, optional): The maximum delay in seconds.
+        Defaults to 10.
+
+    Returns:
+        List[float]: A list of delays (float values) in ascending order.
+    """
     delays = await asyncio.gather(*(wait_random(max_delay) for _ in range(n)))
-    
     return sorted(delays)
